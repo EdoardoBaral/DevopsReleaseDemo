@@ -53,7 +53,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
   docker:
     name: Publish - Docker Hub
     runs-on: ubuntu-18.04
