@@ -19,15 +19,26 @@ public class HelloControllerTest {
 	@Test
 	public void testStatusOk() {
 		HelloResponse actual = this.restTemplate.getForObject("/hello/status", HelloResponse.class);
-		HelloResponse expected = buildExpectedOkResponse();
+		HelloResponse expected = buildExpectedOkResponseStatus();
+		assertThat(actual).isEqualTo(expected);
+	}
+	
+	@Test
+	public void testGreetingOk() {
+		HelloResponse actual = this.restTemplate.getForObject("/hello/greeting", HelloResponse.class);
+		HelloResponse expected = buildExpectedOkResponseGreeting();
 		assertThat(actual).isEqualTo(expected);
 	}
 
-
-	private HelloResponse buildExpectedOkResponse() {
+	private HelloResponse buildExpectedOkResponseStatus() {
 		HelloResponse res = new HelloResponse();
 		res.setStatus("OK");
 		return res;
 	}
-
+	
+	private HelloResponse buildExpectedOkResponseGreeting() {
+		HelloResponse res = new HelloResponse();
+		res.setStatus("Hello World!");
+		return res;
+	}
 }
